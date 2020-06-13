@@ -1,0 +1,13 @@
+name: celebs-cnn
+
+docker_env:
+  image: celeb-faces-cnn
+  volumes: ["/Users/georgenovack/Repos/mlflow-projects/mlruns:/mlflow/tmp/mlruns"]
+
+entry_points:
+  main:
+    parameters:
+      batch_size: {type: int, default: 32}
+      epochs: {type: int, default: 10}
+      convolutions: {type: int, default: 1}
+    command: "python train.py --batch-size {batch_size} --epochs {epochs} --convolutions {convolutions}"
